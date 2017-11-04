@@ -4,6 +4,77 @@ webpackJsonp([6],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RepassPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(44);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var RepassPage = (function () {
+    function RepassPage(navCtrl, authService, toastCtrl) {
+        this.navCtrl = navCtrl;
+        this.authService = authService;
+        this.toastCtrl = toastCtrl;
+        this.userData = { "email": "" };
+    }
+    RepassPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad RepassPage');
+    };
+    RepassPage.prototype.alerta = function (mensaje) {
+        var toast = this.toastCtrl.create({
+            message: mensaje,
+            duration: 10000,
+            closeButtonText: 'Ok'
+        });
+        toast.present();
+    };
+    RepassPage.prototype.recupera = function () {
+        var _this = this;
+        if (this.userData.email) {
+            this.authService.postData(this.userData, "recupera").then(function (result) {
+                _this.resposeData = result;
+                console.log(_this.resposeData);
+                _this.alerta(_this.resposeData.mensaje);
+            }, function (err) {
+                _this.alerta("Ocurrio un error de conexión, por favor verifica tu conexión a internet");
+            });
+        }
+        else {
+            this.alerta("Por favor ingresa datos válidos");
+            console.log("Give valid information.");
+        }
+    };
+    RepassPage.prototype.login = function () { this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* Login */]); };
+    return RepassPage;
+}());
+RepassPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-repass',template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\repass\repass.html"*/'<ion-content padding>\n\n  <ion-grid>\n\n    <ion-col col-sm-12 offset-md-4 col-md-4 >\n\n       <div class="center-block w-xxl w-auto-xs p-y-md ">\n\n        <div class="center-block w-xxl w-auto-xs p-y-md center">\n\n          <img src="assets/imgs/bananalogo.png" class="logo"/>\n\n        </div>\n\n          <div class="p-a-md box-color r box-shadow-z1 text-color m-a">\n\n            <div>\n\n            Para recuperar tu contraseña coloca tu correo electronico y al dar clic en "Recupera tu contraseña" recibirás un correo electrónico con las instrucciones para generar una nueva contraseña.\n\n            </div>\n\n            <form name="form">\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.email" name="email" required>\n\n                <label>Email</label>\n\n              </div>\n\n              <div class="m-b-md">        \n\n                <label class="md-check">\n\n                  <input type="checkbox"><i class="primary"></i> Acepto términos y condiciones\n\n                </label>\n\n              </div>\n\n              <button class="btn primary btn-block p-x-md" (click)="recupera()">Recupera tu contaseña</button>\n\n            </form>\n\n          </div>\n\n\n\n          <div class="p-v-lg text-center">\n\n            <div>¿Ya tienes cuenta? <a class="text-primary _600" (click)="login()">Ingresa con tu cuenta</a></div>\n\n          </div>\n\n        </div>\n\n    </ion-col>\n\n  </ion-grid>\n\n</ion-content>\n\n\n\n\n\n '/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\repass\repass.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
+], RepassPage);
+
+//# sourceMappingURL=repass.js.map
+
+/***/ }),
+
+/***/ 109:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiPerfilPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
@@ -99,83 +170,12 @@ var MiPerfilPage = (function () {
 }());
 MiPerfilPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-mi-perfil',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\mi-perfil\mi-perfil.html"*/'\n\n<ion-content no-padding>\n<div id="content" class="app-content box-shadow-z0" role="main">\n    \n   \n    <div ui-view class="app-body" id="view">\n\n<!-- ############ PAGE START-->\n\n  <div class="item">\n    <div class="item-bg">\n      <img src="../assets/images/a1.jpg" class="blur opacity-3">\n    </div>\n    <div class="p-a-md">\n      <div class="row m-t">\n        <div class="col-sm-7">\n          <a href class="pull-left m-r-md">\n            <span class="avatar w-96">\n              <img src="../assets/images/a1.jpg">\n              <i class="on b-white"></i>\n            </span>\n          </a>\n          <div class="clear m-b">\n            <h3 class="m-0 m-b-xs">Juan Carlos Reyes</h3>\n            <p class="text-muted"><span class="m-r">Boscotron2000</span> <small><i class="fa fa-map-marker m-r-xs"></i>México, DF</small></p>\n            <div class="block clearfix m-b">\n              <ion-icon name="facebook"></ion-icon>\n            </div>\n            <button ion-button color="secondary">Dietas</button>\n          </div>\n        </div>\n        <div class="col-sm-5">\n          <p class="text-md profile-status">{{resultadoPrint || async}}</p>          \n		  <ion-item>\n		    <ion-label floating>Cambiar registro </ion-label>\n		    <ion-textarea type="text" value=""  [(ngModel)]="formulario.campo1"></ion-textarea>\n		  </ion-item>\n          <button ion-button color="energy" (click)="guardar()">Guardar prueba</button>\n          	\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class="dker p-x">\n    <div class="row">\n      <div class="col-sm-6 push-sm-6">\n        <div class="p-y text-center text-sm-right">\n          <a href class="inline p-x text-center">\n            <span class="h4 block m-0">2k</span>\n            <small class="text-xs text-muted">Followers</small>\n          </a>\n          <a href class="inline p-x b-l b-r text-center">\n            <span class="h4 block m-0">250</span>\n            <small class="text-xs text-muted">Following</small>\n          </a>\n          <a href class="inline p-x text-center">\n            <span class="h4 block m-0">89</span>\n            <small class="text-xs text-muted">Activities</small>\n          </a>\n        </div>\n      </div>\n      <div class="col-sm-6 pull-sm-6">\n        <div class="p-y-md clearfix nav-active-primary">\n          <ul class="nav nav-pills nav-sm">\n            <li class="nav-item active">\n                <button ion-button color="secondary" small class="nav-link">General</button>\n            </li>\n            <li class="nav-item">\n              <button ion-button color="secondary" small class="nav-link">Preferencias alimenticias</button>\n            </li>\n            <li class="nav-item">\n              <button ion-button color="secondary" small class="nav-link">Médico</button>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class="padding">\n    <div class="row">\n      <div class="col-sm-8 col-lg-9">\n        <div class="tab-content">      \n          <div class="tab-pane p-v-sm active" id="tab_1">\n            <div class="row m-b">\n              <div class="col-xs-6">\n                <small class="text-muted">Cell Phone</small>\n                <div class="_500">1243 0303 0333</div>\n              </div>\n              <div class="col-xs-6">\n                <small class="text-muted">Family Phone</small>\n                <div class="_500">+32(0) 3003 234 543</div>\n              </div>\n            </div>\n            <div class="row m-b">\n              <div class="col-xs-6">\n                <small class="text-muted">Reporter</small>\n                <div class="_500">Coch Jose</div>\n              </div>\n              <div class="col-xs-6">\n                <small class="text-muted">Manager</small>\n                <div class="_500">James Richo</div>\n              </div>\n            </div>\n            <div>\n              <small class="text-muted">Bio</small>\n              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue.</div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n<!-- ############ PAGE END-->\n\n    </div>\n  </div>\n  <!-- / -->\n\n  <!-- theme switcher -->\n  <div id="switcher">\n   \n     \n      \n     \n    </div>\n  <!-- / -->\n</ion-content>'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\mi-perfil\mi-perfil.html"*/,
+        selector: 'page-mi-perfil',template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\mi-perfil\mi-perfil.html"*/'\n\n\n\n<ion-content no-padding>\n\n<div id="content" class="app-content box-shadow-z0" role="main">\n\n    \n\n   \n\n    <div ui-view class="app-body" id="view">\n\n\n\n<!-- ############ PAGE START-->\n\n\n\n  <div class="item">\n\n    <div class="item-bg">\n\n      <img src="../assets/images/a1.jpg" class="blur opacity-3">\n\n    </div>\n\n    <div class="p-a-md">\n\n      <div class="row m-t">\n\n        <div class="col-sm-7">\n\n          <a href class="pull-left m-r-md">\n\n            <span class="avatar w-96">\n\n              <img src="../assets/images/a1.jpg">\n\n              <i class="on b-white"></i>\n\n            </span>\n\n          </a>\n\n          <div class="clear m-b">\n\n            <h3 class="m-0 m-b-xs">Juan Carlos Reyes</h3>\n\n            <p class="text-muted"><span class="m-r">Boscotron2000</span> <small><i class="fa fa-map-marker m-r-xs"></i>México, DF</small></p>\n\n            <div class="block clearfix m-b">\n\n              <ion-icon name="facebook"></ion-icon>\n\n            </div>\n\n            <button ion-button color="secondary">Dietas</button>\n\n          </div>\n\n        </div>\n\n        <div class="col-sm-5">\n\n          <p class="text-md profile-status">{{resultadoPrint || async}}</p>          \n\n		  <ion-item>\n\n		    <ion-label floating>Cambiar registro </ion-label>\n\n		    <ion-textarea type="text" value=""  [(ngModel)]="formulario.campo1"></ion-textarea>\n\n		  </ion-item>\n\n          <button ion-button color="energy" (click)="guardar()">Guardar prueba</button>\n\n          	\n\n        </div>\n\n      </div>\n\n    </div>\n\n  </div>\n\n  <div class="dker p-x">\n\n    <div class="row">\n\n      <div class="col-sm-6 push-sm-6">\n\n        <div class="p-y text-center text-sm-right">\n\n          <a href class="inline p-x text-center">\n\n            <span class="h4 block m-0">2k</span>\n\n            <small class="text-xs text-muted">Followers</small>\n\n          </a>\n\n          <a href class="inline p-x b-l b-r text-center">\n\n            <span class="h4 block m-0">250</span>\n\n            <small class="text-xs text-muted">Following</small>\n\n          </a>\n\n          <a href class="inline p-x text-center">\n\n            <span class="h4 block m-0">89</span>\n\n            <small class="text-xs text-muted">Activities</small>\n\n          </a>\n\n        </div>\n\n      </div>\n\n      <div class="col-sm-6 pull-sm-6">\n\n        <div class="p-y-md clearfix nav-active-primary">\n\n          <ul class="nav nav-pills nav-sm">\n\n            <li class="nav-item active">\n\n                <button ion-button color="secondary" small class="nav-link">General</button>\n\n            </li>\n\n            <li class="nav-item">\n\n              <button ion-button color="secondary" small class="nav-link">Preferencias alimenticias</button>\n\n            </li>\n\n            <li class="nav-item">\n\n              <button ion-button color="secondary" small class="nav-link">Médico</button>\n\n            </li>\n\n          </ul>\n\n        </div>\n\n      </div>\n\n    </div>\n\n  </div>\n\n  <div class="padding">\n\n    <div class="row">\n\n      <div class="col-sm-8 col-lg-9">\n\n        <div class="tab-content">      \n\n          <div class="tab-pane p-v-sm active" id="tab_1">\n\n            <div class="row m-b">\n\n              <div class="col-xs-6">\n\n                <small class="text-muted">Cell Phone</small>\n\n                <div class="_500">1243 0303 0333</div>\n\n              </div>\n\n              <div class="col-xs-6">\n\n                <small class="text-muted">Family Phone</small>\n\n                <div class="_500">+32(0) 3003 234 543</div>\n\n              </div>\n\n            </div>\n\n            <div class="row m-b">\n\n              <div class="col-xs-6">\n\n                <small class="text-muted">Reporter</small>\n\n                <div class="_500">Coch Jose</div>\n\n              </div>\n\n              <div class="col-xs-6">\n\n                <small class="text-muted">Manager</small>\n\n                <div class="_500">James Richo</div>\n\n              </div>\n\n            </div>\n\n            <div>\n\n              <small class="text-muted">Bio</small>\n\n              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue.</div>\n\n            </div>\n\n          </div>\n\n        </div>\n\n      </div>\n\n    </div>\n\n  </div>\n\n\n\n<!-- ############ PAGE END-->\n\n\n\n    </div>\n\n  </div>\n\n  <!-- / -->\n\n\n\n  <!-- theme switcher -->\n\n  <div id="switcher">\n\n   \n\n     \n\n      \n\n     \n\n    </div>\n\n  <!-- / -->\n\n</ion-content>'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\mi-perfil\mi-perfil.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_common__["a" /* Common */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_3__providers_jmyapis__["a" /* jmyapis */]])
 ], MiPerfilPage);
 
 //# sourceMappingURL=mi-perfil.js.map
-
-/***/ }),
-
-/***/ 109:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RepassPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(44);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var RepassPage = (function () {
-    function RepassPage(navCtrl, authService, toastCtrl) {
-        this.navCtrl = navCtrl;
-        this.authService = authService;
-        this.toastCtrl = toastCtrl;
-        this.userData = { "email": "" };
-    }
-    RepassPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RepassPage');
-    };
-    RepassPage.prototype.alerta = function (mensaje) {
-        var toast = this.toastCtrl.create({
-            message: mensaje,
-            duration: 10000,
-            closeButtonText: 'Ok'
-        });
-        toast.present();
-    };
-    RepassPage.prototype.recupera = function () {
-        var _this = this;
-        if (this.userData.email) {
-            this.authService.postData(this.userData, "recupera").then(function (result) {
-                _this.resposeData = result;
-                console.log(_this.resposeData);
-                _this.alerta(_this.resposeData.mensaje);
-            }, function (err) {
-                _this.alerta("Ocurrio un error de conexión, por favor verifica tu conexión a internet");
-            });
-        }
-        else {
-            this.alerta("Por favor ingresa datos válidos");
-            console.log("Give valid information.");
-        }
-    };
-    RepassPage.prototype.login = function () { this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* Login */]); };
-    return RepassPage;
-}());
-RepassPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-repass',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\repass\repass.html"*/'<ion-content padding>\n\n  <ion-grid>\n\n    <ion-col col-sm-12 offset-md-4 col-md-4 >\n\n       <div class="center-block w-xxl w-auto-xs p-y-md ">\n\n        <div class="center-block w-xxl w-auto-xs p-y-md center">\n\n          <img src="assets/imgs/bananalogo.png" class="logo"/>\n\n        </div>\n\n          <div class="p-a-md box-color r box-shadow-z1 text-color m-a">\n\n            <div>\n\n            Para recuperar tu contraseña coloca tu correo electronico y al dar clic en "Recupera tu contraseña" recibirás un correo electrónico con las instrucciones para generar una nueva contraseña.\n\n            </div>\n\n            <form name="form">\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.email" name="email" required>\n\n                <label>Email</label>\n\n              </div>\n\n              <div class="m-b-md">        \n\n                <label class="md-check">\n\n                  <input type="checkbox"><i class="primary"></i> Acepto términos y condiciones\n\n                </label>\n\n              </div>\n\n              <button class="btn primary btn-block p-x-md" (click)="recupera()">Recupera tu contaseña</button>\n\n            </form>\n\n          </div>\n\n\n\n          <div class="p-v-lg text-center">\n\n            <div>¿Ya tienes cuenta? <a class="text-primary _600" (click)="login()">Ingresa con tu cuenta</a></div>\n\n          </div>\n\n        </div>\n\n    </ion-col>\n\n  </ion-grid>\n\n</ion-content>\n\n\n\n\n\n '/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\repass\repass.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
-], RepassPage);
-
-//# sourceMappingURL=repass.js.map
 
 /***/ }),
 
@@ -188,7 +188,7 @@ RepassPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__signup_signup__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(83);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -259,7 +259,7 @@ var Welcome = (function () {
 }());
 Welcome = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-welcome',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\welcome\welcome.html"*/'<ion-content no-bounce>\n\n  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">\n\n    <ion-slide *ngFor="let slide of slides">\n\n      <img [src]="slide.image" class="slides-img" />\n\n      <h2 class="slide-title" [innerHTML]="slide.title"></h2>\n\n      <p [innerHTML]="slide.description"></p>\n\n    </ion-slide>\n\n    <ion-slide>\n\n      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />\n\n      <h2 class="slide-title">Listo para empezar!</h2>\n\n      <button ion-button icon-end large clear (click)="login()">\n\n        Inicia ahora\n\n        <ion-icon name="arrow-forward"></ion-icon>\n\n      </button>\n\n    </ion-slide>\n\n  </ion-slides>\n\n</ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n\n     <ion-buttons end *ngIf="showSkip">\n\n      <button ion-button (click)="login()" color="dark">Saltar</button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\welcome\welcome.html"*/,
+        selector: 'page-welcome',template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\welcome\welcome.html"*/'<ion-content no-bounce>\n\n  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">\n\n    <ion-slide *ngFor="let slide of slides">\n\n      <img [src]="slide.image" class="slides-img" />\n\n      <h2 class="slide-title" [innerHTML]="slide.title"></h2>\n\n      <p [innerHTML]="slide.description"></p>\n\n    </ion-slide>\n\n    <ion-slide>\n\n      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />\n\n      <h2 class="slide-title">Listo para empezar!</h2>\n\n      <button ion-button icon-end large clear (click)="login()">\n\n        Inicia ahora\n\n        <ion-icon name="arrow-forward"></ion-icon>\n\n      </button>\n\n    </ion-slide>\n\n  </ion-slides>\n\n</ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n\n     <ion-buttons end *ngIf="showSkip">\n\n      <button ion-button (click)="login()" color="dark">Saltar</button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\welcome\welcome.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]])
 ], Welcome);
@@ -290,27 +290,27 @@ webpackEmptyAsyncContext.id = 119;
 
 var map = {
 	"../pages/data-base/data-base.module": [
-		418,
+		419,
 		0
 	],
 	"../pages/login/login.module": [
-		422,
+		420,
 		5
 	],
 	"../pages/mi-perfil/mi-perfil.module": [
-		419,
+		421,
 		4
 	],
 	"../pages/repass/repass.module": [
-		420,
+		422,
 		3
 	],
 	"../pages/signup/signup.module": [
-		421,
+		423,
 		2
 	],
 	"../pages/welcome/welcome.module": [
-		423,
+		424,
 		1
 	]
 };
@@ -337,6 +337,8 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_highcharts__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_highcharts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_highcharts__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -346,6 +348,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 /*
@@ -365,6 +368,29 @@ var AboutPage = (function () {
         this.ver();
     };
     AboutPage.prototype.ver = function () {
+        __WEBPACK_IMPORTED_MODULE_2_highcharts__["chart"]('container', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Loooool'
+            },
+            xAxis: {
+                categories: ['Apples', 'Bananas', 'Oranges']
+            },
+            yAxis: {
+                title: {
+                    text: 'Fruit eaten'
+                }
+            },
+            series: [{
+                    name: 'Jane',
+                    data: [1, 0, 4]
+                }, {
+                    name: 'John',
+                    data: [5, 7, 3]
+                }]
+        });
         /*var myChart = HighCharts.chart('plop', {
 
                             chart: {
@@ -509,7 +535,7 @@ var AboutPage = (function () {
 }());
 AboutPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-about',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\about\about.html"*/'\n\n<ion-content padding>\n\n<button></button>\n\n<div id="container" style="display: block;"	></div>\n\n<div id="plop" style="width: 100%; height: 400px; margin: 0 auto"></div>\n\n<button (click)="ver()" >Refrescar </button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\about\about.html"*/
+        selector: 'page-about',template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\about\about.html"*/'\n\n<ion-content padding>\n\n<button></button>\n\n<div id="container" style="display: block;"	></div>\n\n<div id="plop" style="width: 100%; height: 400px; margin: 0 auto"></div>\n\n<button (click)="ver()" >Refrescar </button>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\about\about.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
 ], AboutPage);
@@ -544,7 +570,7 @@ var ContactPage = (function () {
 }());
 ContactPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-contact',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <img ion-right src="assets/imgs/bananalogo.png" class="navbarLogo" />\n\n    <ion-title>Sistema de contacto Prepago</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Sistema de contacto Prepago con el usuario (en Desarrollo)</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="american-football" item-left></ion-icon>\n\n     \n\n    </ion-item>\n\n  </ion-list><p> Se mostrará una serie de herramientas para el usuario con el objetibo de brindarle los servicios con cargo mensual o subscripción por clcinica donde el usuario se encuantre registrado</p>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\contact\contact.html"*/
+        selector: 'page-contact',template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <img ion-right src="assets/imgs/bananalogo.png" class="navbarLogo" />\n\n    <ion-title>Sistema de contacto Prepago</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Sistema de contacto Prepago con el usuario (en Desarrollo)</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="american-football" item-left></ion-icon>\n\n     \n\n    </ion-item>\n\n  </ion-list><p> Se mostrará una serie de herramientas para el usuario con el objetibo de brindarle los servicios con cargo mensual o subscripción por clcinica donde el usuario se encuantre registrado</p>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\contact\contact.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
 ], ContactPage);
@@ -694,7 +720,7 @@ var HomePage = (function () {
     return HomePage;
 }());
 HomePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({ selector: 'page-home',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <img ion-right src="assets/imgs/bananalogo.png" class="navbarLogo" />\n\n    <ion-title>Dashboard</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <h2>Bienvenido {{userDetails.name}}</h2>\n\n  <div> Útiliza esta herramienta de tareas para agregar tus tareas pendientes!</div>\n\n <ion-item id="udpateBox">\n\n<textarea [(ngModel)]="userPostData.feed"></textarea>\n\n<ion-row>\n\n<button ion-button color="energy" (click)="feedUpdate()">Agregar Tarea</button>\n\n</ion-row>\n\n </ion-item>\n\n\n\n  <ion-card *ngFor="let item of dataSet; let msgIndex = index">\n\n    <ion-item>\n\n      <ion-icon name="trash" item-right (click)="feedDelete(item.feed_id, msgIndex)"></ion-icon>\n\n    <ion-card-content>\n\n     \n\n     <p [innerHTML]="item.feed | linky"></p>\n\n     <span>{{this.converTime(item.created) | amTimeAgo}}</span>\n\n    </ion-card-content>\n\n    </ion-item>\n\n  </ion-card>\n\n\n\n  <!--<button ion-button color="primary" (click)="logout()">Logout</button>-->\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\home\home.html"*/ }),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({ selector: 'page-home',template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <img ion-right src="assets/imgs/bananalogo.png" class="navbarLogo" />\n\n    <ion-title>Dashboard</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <h2>Bienvenido {{userDetails.name}}</h2>\n\n  <div> Útiliza esta herramienta de tareas para agregar tus tareas pendientes!</div>\n\n <ion-item id="udpateBox">\n\n<textarea [(ngModel)]="userPostData.feed"></textarea>\n\n<ion-row>\n\n<button ion-button color="energy" (click)="feedUpdate()">Agregar Tarea</button>\n\n</ion-row>\n\n </ion-item>\n\n\n\n  <ion-card *ngFor="let item of dataSet; let msgIndex = index">\n\n    <ion-item>\n\n      <ion-icon name="trash" item-right (click)="feedDelete(item.feed_id, msgIndex)"></ion-icon>\n\n    <ion-card-content>\n\n     \n\n     <p [innerHTML]="item.feed | linky"></p>\n\n     <span>{{this.converTime(item.created) | amTimeAgo}}</span>\n\n    </ion-card-content>\n\n    </ion-item>\n\n  </ion-card>\n\n\n\n  <!--<button ion-button color="primary" (click)="logout()">Logout</button>-->\n\n</ion-content>\n\n'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\home\home.html"*/ }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_common__["a" /* Common */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */]])
 ], HomePage);
 
@@ -766,7 +792,7 @@ SplitPane = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_common__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -981,7 +1007,7 @@ var ModuloPage = (function () {
 }());
 ModuloPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-modulo',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\modulo\modulo.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Modulo de ejemplo</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n	<ion-col>\n\n		<ion-list>\n\n		 <ion-item>\n\n		   	Registro actual: {{resultadoPrint || async}}\n\n		  </ion-item>\n\n		 <ion-item>\n\n		    <ion-label floating>Cambiar registro </ion-label>\n\n		    <ion-input type="text" value=""  [(ngModel)]="formulario.campo1"></ion-input>\n\n		  </ion-item>\n\n		  <ion-item>\n\n		  </ion-item>\n\n		</ion-list>	\n\n	</ion-col>\n\n	<ion-col>\n\n		<ion-col>\n\n		  	<button ion-button color="energy" (click)="ver()">Ver prueba</button>\n\n		</ion-col>\n\n		<ion-col>\n\n		  	<button ion-button color="energy" (click)="guardar()">Guardar prueba</button>\n\n		</ion-col>\n\n		<ion-col>\n\n		  	<button ion-button color="energy" (click)="borrar()">Borrar prueba</button>\n\n		</ion-col>\n\n	</ion-col>\n\n</ion-content>'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\modulo\modulo.html"*/,
+        selector: 'page-modulo',template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\modulo\modulo.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Modulo de ejemplo</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n	<ion-col>\n\n		<ion-list>\n\n		 <ion-item>\n\n		   	Registro actual: {{resultadoPrint || async}}\n\n		  </ion-item>\n\n		 <ion-item>\n\n		    <ion-label floating>Cambiar registro </ion-label>\n\n		    <ion-input type="text" value=""  [(ngModel)]="formulario.campo1"></ion-input>\n\n		  </ion-item>\n\n		  <ion-item>\n\n		  </ion-item>\n\n		</ion-list>	\n\n	</ion-col>\n\n	<ion-col>\n\n		<ion-col>\n\n		  	<button ion-button color="energy" (click)="ver()">Ver prueba</button>\n\n		</ion-col>\n\n		<ion-col>\n\n		  	<button ion-button color="energy" (click)="guardar()">Guardar prueba</button>\n\n		</ion-col>\n\n		<ion-col>\n\n		  	<button ion-button color="energy" (click)="borrar()">Borrar prueba</button>\n\n		</ion-col>\n\n	</ion-col>\n\n</ion-content>'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\modulo\modulo.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_common__["a" /* Common */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_3__providers_jmyapis__["a" /* jmyapis */]])
 ], ModuloPage);
@@ -996,8 +1022,8 @@ ModuloPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1116,29 +1142,29 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_split_pane__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_common__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_jmyapis__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_jmydb__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_jmydb__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_jmy_fat_kit__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_http__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_http__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_welcome_welcome__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_login_login__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_signup_signup__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_repass_repass__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_repass_repass__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_about_about__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contact_contact__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_mi_perfil_mi_perfil__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_mi_perfil_mi_perfil__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_modulo_modulo__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_status_bar__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_splash_screen__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_angular2_moment__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_angular2_moment__ = __webpack_require__(412);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_angular_linky__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_angular_linky__ = __webpack_require__(417);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_angular_linky___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24_angular_linky__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1196,10 +1222,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                 links: [
                     { loadChildren: '../pages/data-base/data-base.module#DataBasePageModule', name: 'DataBasePage', segment: 'data-base', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/login/login.module#LoginModule', name: 'Login', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/mi-perfil/mi-perfil.module#MiPerfilPageModule', name: 'MiPerfilPage', segment: 'mi-perfil', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/repass/repass.module#RepassPageModule', name: 'RepassPage', segment: 'repass', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/signup/signup.module#SignupModule', name: 'Signup', segment: 'signup', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/login/login.module#LoginModule', name: 'Login', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/welcome/welcome.module#WelcomeModule', name: 'Welcome', segment: 'welcome', priority: 'low', defaultHistory: [] }
                 ]
             })
@@ -1230,7 +1256,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 401:
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1244,7 +1270,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_jmy_fat_kit__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_welcome_welcome__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_modulo_modulo__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_mi_perfil_mi_perfil__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_mi_perfil_mi_perfil__ = __webpack_require__(109);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1528,7 +1554,7 @@ __decorate([
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */])
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\app\app.html"*/'<!--<ion-nav [root]="rootPage"></ion-nav>-->\n\n<ion-split-pane [when]="splitPane.getSplitPane()">\n\n  <ion-menu [content]="content" >\n    <ion-header>\n      <ion-toolbar>\n        <ion-title><img width="26" style="vertical-align: middle;" src="assets/images/ico_700x700.png"> Panel </ion-title>\n      </ion-toolbar>\n    </ion-header>\n   \n \n\n  \n     <ion-content id="asideMenu"> \n\n      <ion-card id="profile" *ngIf="!!divs.cardPerfil"> \n        <ion-item>\n          <ion-avatar item-start>\n            <ion-icon name="contact"></ion-icon>\n          </ion-avatar>\n          <h2>{{nombreUsuario()}}</h2>\n          <p>{{nombreEmpresa}}</p>\n        </ion-item> \n\n        <ion-item class="tools">\n          <ion-col no-padding no-margin>\n            <button ion-button small no-margin class="pBtn" (click)="btnEditar()"><ion-icon name="build"></ion-icon></button>\n          </ion-col>\n          <ion-col no-padding no-margin>\n            <button ion-button small no-margin class="pBtn" (click)="btnEmpresa()"><ion-icon name="briefcase"></ion-icon></button>\n          </ion-col>\n          <ion-col no-padding no-margin>\n            <button ion-button small no-margin class="pBtn" (click)="salirConfirmar()"><ion-icon name="log-out"></ion-icon></button>\n          </ion-col>\n         </ion-item>\n\n        <ion-item *ngIf="!!divs.empresa">\n          <ion-label floating>Empresa</ion-label>\n          <ion-select (ionChange)=\'cambiarEmpresa()\' [(ngModel)]="formulario.idEmpresa" interface="popover"  okText="Cambiar" cancelText="Cancelar">\n              <ion-option *ngFor="let empresa of empresas " value="{{empresa.id_empresa}}">{{empresa.nombre}}</ion-option>\n          </ion-select>\n        </ion-item>\n\n        <ion-item class="tools" ion-item *ngIf="!!divs.editarPerfil">\n          <ion-col no-padding no-margin>\n            <button ion-button small no-margin class="pBtn" (click)="editarPerfil()"><ion-icon name="person"> </ion-icon> Perfil </button>\n          </ion-col>\n          <ion-col no-padding no-margin>\n            <button ion-button small no-margin class="pBtn" (click)="editarPass()"><ion-icon name="key"> </ion-icon> Contraseña</button>\n          </ion-col>\n         </ion-item>\n\n\n      </ion-card>\n    <ion-list>\n        <div *ngFor="let p of pagesView" (click)="openPage(p)">\n          <button menuClose ion-item>\n            <ion-icon name="{{p.icon}}"></ion-icon>\n            {{p.title}}\n          </button>\n        </div>\n    </ion-list>\n     </ion-content>\n\n  </ion-menu>\n\n\n\n  <ion-nav [root]="rootPage" main #content></ion-nav>\n</ion-split-pane>\n\n\n\n'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\app\app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\app\app.html"*/'<!--<ion-nav [root]="rootPage"></ion-nav>-->\n\n\n\n<ion-split-pane [when]="splitPane.getSplitPane()">\n\n\n\n  <ion-menu [content]="content" >\n\n    <ion-header>\n\n      <ion-toolbar>\n\n        <ion-title><img width="26" style="vertical-align: middle;" src="assets/images/ico_700x700.png"> Panel </ion-title>\n\n      </ion-toolbar>\n\n    </ion-header>\n\n   \n\n \n\n\n\n  \n\n     <ion-content id="asideMenu"> \n\n\n\n      <ion-card id="profile" *ngIf="!!divs.cardPerfil"> \n\n        <ion-item>\n\n          <ion-avatar item-start>\n\n            <ion-icon name="contact"></ion-icon>\n\n          </ion-avatar>\n\n          <h2>{{nombreUsuario()}}</h2>\n\n          <p>{{nombreEmpresa}}</p>\n\n        </ion-item> \n\n\n\n        <ion-item class="tools">\n\n          <ion-col no-padding no-margin>\n\n            <button ion-button small no-margin class="pBtn" (click)="btnEditar()"><ion-icon name="build"></ion-icon></button>\n\n          </ion-col>\n\n          <ion-col no-padding no-margin>\n\n            <button ion-button small no-margin class="pBtn" (click)="btnEmpresa()"><ion-icon name="briefcase"></ion-icon></button>\n\n          </ion-col>\n\n          <ion-col no-padding no-margin>\n\n            <button ion-button small no-margin class="pBtn" (click)="salirConfirmar()"><ion-icon name="log-out"></ion-icon></button>\n\n          </ion-col>\n\n         </ion-item>\n\n\n\n        <ion-item *ngIf="!!divs.empresa">\n\n          <ion-label floating>Empresa</ion-label>\n\n          <ion-select (ionChange)=\'cambiarEmpresa()\' [(ngModel)]="formulario.idEmpresa" interface="popover"  okText="Cambiar" cancelText="Cancelar">\n\n              <ion-option *ngFor="let empresa of empresas " value="{{empresa.id_empresa}}">{{empresa.nombre}}</ion-option>\n\n          </ion-select>\n\n        </ion-item>\n\n\n\n        <ion-item class="tools" ion-item *ngIf="!!divs.editarPerfil">\n\n          <ion-col no-padding no-margin>\n\n            <button ion-button small no-margin class="pBtn" (click)="editarPerfil()"><ion-icon name="person"> </ion-icon> Perfil </button>\n\n          </ion-col>\n\n          <ion-col no-padding no-margin>\n\n            <button ion-button small no-margin class="pBtn" (click)="editarPass()"><ion-icon name="key"> </ion-icon> Contraseña</button>\n\n          </ion-col>\n\n         </ion-item>\n\n\n\n\n\n      </ion-card>\n\n    <ion-list>\n\n        <div *ngFor="let p of pagesView" (click)="openPage(p)">\n\n          <button menuClose ion-item>\n\n            <ion-icon name="{{p.icon}}"></ion-icon>\n\n            {{p.title}}\n\n          </button>\n\n        </div>\n\n    </ion-list>\n\n     </ion-content>\n\n\n\n  </ion-menu>\n\n\n\n\n\n\n\n  <ion-nav [root]="rootPage" main #content></ion-nav>\n\n</ion-split-pane>\n\n\n\n\n\n\n\n'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\app\app.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_4__providers_split_pane__["a" /* SplitPane */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */], __WEBPACK_IMPORTED_MODULE_5__providers_jmyapis__["a" /* jmyapis */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_6__providers_jmy_fat_kit__["a" /* jmyfatkit */]])
 ], MyApp);
@@ -1537,7 +1563,7 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 410:
+/***/ 411:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1638,7 +1664,7 @@ JMYDB = __decorate([
 
 /***/ }),
 
-/***/ 413:
+/***/ 414:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -1893,7 +1919,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 413;
+webpackContext.id = 414;
 
 /***/ }),
 
@@ -1903,11 +1929,11 @@ webpackContext.id = 413;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return jmyapis; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_common__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2080,7 +2106,7 @@ var jmyapis = (function () {
     jmyapis.prototype.empresaapi = function (idEmpresa) {
         if (idEmpresa != undefined) {
             var data = JSON.parse(localStorage.getItem('jmyData'));
-            if (data.empresaApi != null) {
+            if (data != undefined) {
                 this.cambiarempresa(idEmpresa);
                 if (data.empresaApi[idEmpresa] != undefined) {
                     return data.empresaApi[idEmpresa].api;
@@ -2124,11 +2150,11 @@ jmyapis = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Login; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_jmyapis__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__signup_signup__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__repass_repass__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__repass_repass__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2219,7 +2245,7 @@ var Login = (function () {
 }());
 Login = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-login',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\login\login.html"*/'<ion-content padding>\n\n  <ion-grid>\n\n    <ion-col col-sm-12 offset-md-4 col-md-4 >\n\n       <div class="center-block w-xxl w-auto-xs p-y-md center">\n\n          <img src="assets/imgs/bananalogo.png" class="logo"/>\n\n          <div class="p-a-md box-color r box-shadow-z1 text-color m-a">\n\n            <div>\n\n             Si ya tienes entra con tu cuenta.\n\n            </div>\n\n            <form name="form">\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.username" name="username" required>\n\n                <label>Email o usuario</label>\n\n              </div>\n\n              <div class="md-form-group float-label">\n\n                <input type="password" class="md-input" [(ngModel)]="userData.password" name="password" required>\n\n                <label>Contraseña</label>\n\n              </div>      \n\n              <div class="m-b-md">        \n\n                <label class="md-check">\n\n                  <input type="checkbox"><i class="primary"></i> Mantenerme conectado\n\n                </label>\n\n              </div>\n\n              <button class="btn primary btn-block p-x-md" (click)="login()">Entrar</button>\n\n            </form>\n\n          </div>\n\n\n\n          <div class="p-v-lg text-center">\n\n            <div class="m-b"><a class="text-primary _600" (click)="repass()">¿Olvidaste tu contraseña?</a></div>\n\n            <div>¿No tienes cuenta? <a class="text-primary _600" (click)="signup()">Registrate</a></div>\n\n          </div>\n\n        </div>\n\n    </ion-col>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\login\login.html"*/,
+        selector: 'page-login',template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\login\login.html"*/'<ion-content padding>\n\n  <ion-grid>\n\n    <ion-col col-sm-12 offset-md-4 col-md-4 >\n\n       <div class="center-block w-xxl w-auto-xs p-y-md center">\n\n          <img src="assets/imgs/bananalogo.png" class="logo"/>\n\n          <div class="p-a-md box-color r box-shadow-z1 text-color m-a">\n\n            <div>\n\n             Si ya tienes entra con tu cuenta.\n\n            </div>\n\n            <form name="form">\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.username" name="username" required>\n\n                <label>Email o usuario</label>\n\n              </div>\n\n              <div class="md-form-group float-label">\n\n                <input type="password" class="md-input" [(ngModel)]="userData.password" name="password" required>\n\n                <label>Contraseña</label>\n\n              </div>      \n\n              <div class="m-b-md">        \n\n                <label class="md-check">\n\n                  <input type="checkbox"><i class="primary"></i> Mantenerme conectado\n\n                </label>\n\n              </div>\n\n              <button class="btn primary btn-block p-x-md" (click)="login()">Entrar</button>\n\n            </form>\n\n          </div>\n\n\n\n          <div class="p-v-lg text-center">\n\n            <div class="m-b"><a class="text-primary _600" (click)="repass()">¿Olvidaste tu contraseña?</a></div>\n\n            <div>¿No tienes cuenta? <a class="text-primary _600" (click)="signup()">Registrate</a></div>\n\n          </div>\n\n        </div>\n\n    </ion-col>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\login\login.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_jmyapis__["a" /* jmyapis */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */]])
 ], Login);
@@ -2323,7 +2349,7 @@ var Signup = (function () {
     return Signup;
 }());
 Signup = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({ selector: 'page-signup',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\signup\signup.html"*/'<ion-content padding>\n\n  <ion-grid>\n\n    <ion-col col-sm-12 offset-md-4 col-md-4 >\n\n       <div class="center-block w-xxl w-auto-xs p-y-md ">\n\n        <div class="center-block w-xxl w-auto-xs p-y-md center">\n\n          <img src="assets/imgs/bananalogo.png" class="logo"/>\n\n        </div>\n\n          <div class="p-a-md box-color r box-shadow-z1 text-color m-a">\n\n            <div>\n\n            Con solo algunos datos sencillos empieza a usar nuestra aplicación\n\n            </div>\n\n            <form name="form">\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.name" name="name" required>\n\n                <label>Nombre completo</label>\n\n              </div>\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.email" name="email" required>\n\n                <label>Email</label>\n\n              </div>\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.username" name="username" required>\n\n                <label>Usuario</label>\n\n              </div>\n\n              <div class="md-form-group float-label">\n\n                <input type="password" class="md-input" [(ngModel)]="userData.password" name="password" required>\n\n                <label>Contraseña</label>\n\n              </div>      \n\n              <div class="m-b-md">        \n\n                <label class="md-check">\n\n                  <input type="checkbox"><i class="primary"></i> Acepto términos y condiciones\n\n                </label>\n\n              </div>\n\n              <button class="btn primary btn-block p-x-md" (click)="signup()">Registrate</button>\n\n            </form>\n\n          </div>\n\n\n\n          <div class="p-v-lg text-center">\n\n            <div>¿Ya tienes cuenta? <a class="text-primary _600" (click)="login()">Ingresa con tu cuenta</a></div>\n\n          </div>\n\n        </div>\n\n    </ion-col>\n\n  </ion-grid>\n\n</ion-content>\n\n\n\n\n\n'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\signup\signup.html"*/ }),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({ selector: 'page-signup',template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\signup\signup.html"*/'<ion-content padding>\n\n  <ion-grid>\n\n    <ion-col col-sm-12 offset-md-4 col-md-4 >\n\n       <div class="center-block w-xxl w-auto-xs p-y-md ">\n\n        <div class="center-block w-xxl w-auto-xs p-y-md center">\n\n          <img src="assets/imgs/bananalogo.png" class="logo"/>\n\n        </div>\n\n          <div class="p-a-md box-color r box-shadow-z1 text-color m-a">\n\n            <div>\n\n            Con solo algunos datos sencillos empieza a usar nuestra aplicación\n\n            </div>\n\n            <form name="form">\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.name" name="name" required>\n\n                <label>Nombre completo</label>\n\n              </div>\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.email" name="email" required>\n\n                <label>Email</label>\n\n              </div>\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.username" name="username" required>\n\n                <label>Usuario</label>\n\n              </div>\n\n              <div class="md-form-group float-label">\n\n                <input type="password" class="md-input" [(ngModel)]="userData.password" name="password" required>\n\n                <label>Contraseña</label>\n\n              </div>      \n\n              <div class="m-b-md">        \n\n                <label class="md-check">\n\n                  <input type="checkbox"><i class="primary"></i> Acepto términos y condiciones\n\n                </label>\n\n              </div>\n\n              <button class="btn primary btn-block p-x-md" (click)="signup()">Registrate</button>\n\n            </form>\n\n          </div>\n\n\n\n          <div class="p-v-lg text-center">\n\n            <div>¿Ya tienes cuenta? <a class="text-primary _600" (click)="login()">Ingresa con tu cuenta</a></div>\n\n          </div>\n\n        </div>\n\n    </ion-col>\n\n  </ion-grid>\n\n</ion-content>\n\n\n\n\n\n'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\signup\signup.html"*/ }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
 ], Signup);
 
@@ -2331,7 +2357,7 @@ Signup = __decorate([
 
 /***/ }),
 
-/***/ 85:
+/***/ 83:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2362,7 +2388,7 @@ var TabsPage = (function () {
     return TabsPage;
 }());
 TabsPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab2Root" tabTitle="Retos" tabIcon="stopwatch" tabBadge="5" tabBadgeStyle="danger"></ion-tab>\n\n  <ion-tab [root]="tab1Root" tabTitle="Dietas" tabIcon="restaurant"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Plus" tabIcon="contacts"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\tabs\tabs.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\XAMPP\htdocs\DP5\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab2Root" tabTitle="Retos" tabIcon="stopwatch" tabBadge="5" tabBadgeStyle="danger"></ion-tab>\n\n  <ion-tab [root]="tab1Root" tabTitle="Dietas" tabIcon="restaurant"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Plus" tabIcon="contacts"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"D:\XAMPP\htdocs\DP5\src\pages\tabs\tabs.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], TabsPage);

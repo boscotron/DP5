@@ -132,8 +132,6 @@ export class jmyapis {
       }
     }
   }
-
-
   alerta(men) {
     const toast = this.toastCtrl.create({
       message: men,
@@ -158,7 +156,7 @@ export class jmyapis {
   empresaapi(idEmpresa){
     if(idEmpresa!=undefined){
     var data = JSON.parse(localStorage.getItem('jmyData'));
-    if(data.empresaApi!=null ){
+    if(data!=undefined ){
     this.cambiarempresa(idEmpresa);  
     if(data.empresaApi[idEmpresa]!=undefined){
       return data.empresaApi[idEmpresa].api;
@@ -171,5 +169,5 @@ export class jmyapis {
         localStorage.setItem('jmyData',JSON.stringify(data));}}
   empresadefault(){
      var data = JSON.parse(localStorage.getItem('jmyData'));
-     return (data!=undefined)? data.primerempresa:0;}
+     return (data!=undefined)?data.primerempresa:0;}
 }
