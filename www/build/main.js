@@ -4,6 +4,77 @@ webpackJsonp([6],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RepassPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(44);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var RepassPage = (function () {
+    function RepassPage(navCtrl, authService, toastCtrl) {
+        this.navCtrl = navCtrl;
+        this.authService = authService;
+        this.toastCtrl = toastCtrl;
+        this.userData = { "email": "" };
+    }
+    RepassPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad RepassPage');
+    };
+    RepassPage.prototype.alerta = function (mensaje) {
+        var toast = this.toastCtrl.create({
+            message: mensaje,
+            duration: 10000,
+            closeButtonText: 'Ok'
+        });
+        toast.present();
+    };
+    RepassPage.prototype.recupera = function () {
+        var _this = this;
+        if (this.userData.email) {
+            this.authService.postData(this.userData, "recupera").then(function (result) {
+                _this.resposeData = result;
+                console.log(_this.resposeData);
+                _this.alerta(_this.resposeData.mensaje);
+            }, function (err) {
+                _this.alerta("Ocurrio un error de conexión, por favor verifica tu conexión a internet");
+            });
+        }
+        else {
+            this.alerta("Por favor ingresa datos válidos");
+            console.log("Give valid information.");
+        }
+    };
+    RepassPage.prototype.login = function () { this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* Login */]); };
+    return RepassPage;
+}());
+RepassPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-repass',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\repass\repass.html"*/'<ion-content padding>\n\n  <ion-grid>\n\n    <ion-col col-sm-12 offset-md-4 col-md-4 >\n\n       <div class="center-block w-xxl w-auto-xs p-y-md ">\n\n        <div class="center-block w-xxl w-auto-xs p-y-md center">\n\n          <img src="assets/imgs/bananalogo.png" class="logo"/>\n\n        </div>\n\n          <div class="p-a-md box-color r box-shadow-z1 text-color m-a">\n\n            <div>\n\n            Para recuperar tu contraseña coloca tu correo electronico y al dar clic en "Recupera tu contraseña" recibirás un correo electrónico con las instrucciones para generar una nueva contraseña.\n\n            </div>\n\n            <form name="form">\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.email" name="email" required>\n\n                <label>Email</label>\n\n              </div>\n\n              <div class="m-b-md">        \n\n                <label class="md-check">\n\n                  <input type="checkbox"><i class="primary"></i> Acepto términos y condiciones\n\n                </label>\n\n              </div>\n\n              <button class="btn primary btn-block p-x-md" (click)="recupera()">Recupera tu contaseña</button>\n\n            </form>\n\n          </div>\n\n\n\n          <div class="p-v-lg text-center">\n\n            <div>¿Ya tienes cuenta? <a class="text-primary _600" (click)="login()">Ingresa con tu cuenta</a></div>\n\n          </div>\n\n        </div>\n\n    </ion-col>\n\n  </ion-grid>\n\n</ion-content>\n\n\n\n\n\n '/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\repass\repass.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
+], RepassPage);
+
+//# sourceMappingURL=repass.js.map
+
+/***/ }),
+
+/***/ 109:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiPerfilPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
@@ -108,77 +179,6 @@ MiPerfilPage = __decorate([
 
 /***/ }),
 
-/***/ 109:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RepassPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(44);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var RepassPage = (function () {
-    function RepassPage(navCtrl, authService, toastCtrl) {
-        this.navCtrl = navCtrl;
-        this.authService = authService;
-        this.toastCtrl = toastCtrl;
-        this.userData = { "email": "" };
-    }
-    RepassPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RepassPage');
-    };
-    RepassPage.prototype.alerta = function (mensaje) {
-        var toast = this.toastCtrl.create({
-            message: mensaje,
-            duration: 10000,
-            closeButtonText: 'Ok'
-        });
-        toast.present();
-    };
-    RepassPage.prototype.recupera = function () {
-        var _this = this;
-        if (this.userData.email) {
-            this.authService.postData(this.userData, "recupera").then(function (result) {
-                _this.resposeData = result;
-                console.log(_this.resposeData);
-                _this.alerta(_this.resposeData.mensaje);
-            }, function (err) {
-                _this.alerta("Ocurrio un error de conexión, por favor verifica tu conexión a internet");
-            });
-        }
-        else {
-            this.alerta("Por favor ingresa datos válidos");
-            console.log("Give valid information.");
-        }
-    };
-    RepassPage.prototype.login = function () { this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* Login */]); };
-    return RepassPage;
-}());
-RepassPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-repass',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\repass\repass.html"*/'<ion-content padding>\n\n  <ion-grid>\n\n    <ion-col col-sm-12 offset-md-4 col-md-4 >\n\n       <div class="center-block w-xxl w-auto-xs p-y-md ">\n\n        <div class="center-block w-xxl w-auto-xs p-y-md center">\n\n          <img src="assets/imgs/bananalogo.png" class="logo"/>\n\n        </div>\n\n          <div class="p-a-md box-color r box-shadow-z1 text-color m-a">\n\n            <div>\n\n            Para recuperar tu contraseña coloca tu correo electronico y al dar clic en "Recupera tu contraseña" recibirás un correo electrónico con las instrucciones para generar una nueva contraseña.\n\n            </div>\n\n            <form name="form">\n\n              <div class="md-form-group float-label">\n\n                <input type="email" class="md-input"  [(ngModel)]="userData.email" name="email" required>\n\n                <label>Email</label>\n\n              </div>\n\n              <div class="m-b-md">        \n\n                <label class="md-check">\n\n                  <input type="checkbox"><i class="primary"></i> Acepto términos y condiciones\n\n                </label>\n\n              </div>\n\n              <button class="btn primary btn-block p-x-md" (click)="recupera()">Recupera tu contaseña</button>\n\n            </form>\n\n          </div>\n\n\n\n          <div class="p-v-lg text-center">\n\n            <div>¿Ya tienes cuenta? <a class="text-primary _600" (click)="login()">Ingresa con tu cuenta</a></div>\n\n          </div>\n\n        </div>\n\n    </ion-col>\n\n  </ion-grid>\n\n</ion-content>\n\n\n\n\n\n '/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\repass\repass.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
-], RepassPage);
-
-//# sourceMappingURL=repass.js.map
-
-/***/ }),
-
 /***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -188,7 +188,7 @@ RepassPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__signup_signup__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(83);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -294,11 +294,11 @@ var map = {
 		0
 	],
 	"../pages/login/login.module": [
-		422,
+		419,
 		5
 	],
 	"../pages/mi-perfil/mi-perfil.module": [
-		419,
+		421,
 		4
 	],
 	"../pages/repass/repass.module": [
@@ -306,7 +306,7 @@ var map = {
 		3
 	],
 	"../pages/signup/signup.module": [
-		421,
+		422,
 		2
 	],
 	"../pages/welcome/welcome.module": [
@@ -337,6 +337,8 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_HighCharts__ = __webpack_require__(425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_HighCharts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_HighCharts__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -348,12 +350,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/*
-import * as HighCharts from 'HighCharts';
-import * as HighchartsMore from 'highcharts/highcharts-more';
-    
-import * as HighChartsSolidGuague from 'highcharts-solid-gauge';
 
+/*
+import * as HighchartsMore from 'highcharts/highcharts-more';
+import * as HighChartsSolidGuague from 'highcharts-solid-gauge';
 HighchartsMore(HighCharts);
 HighChartsSolidGuague(HighCharts);
 */
@@ -365,145 +365,29 @@ var AboutPage = (function () {
         this.ver();
     };
     AboutPage.prototype.ver = function () {
-        /*var myChart = HighCharts.chart('plop', {
-
-                            chart: {
-                                type: 'solidgauge',
-                                marginTop: 50
-                            },
-
-                            title: {
-                                text: 'Tienes 5 Retos activos!<br>Vamos excelente!',
-                                style: {
-                                    fontSize: '1.8em'
-                                }
-                            },
-
-                            tooltip: {
-                                borderWidth: 0,
-                                backgroundColor: 'none',
-                                shadow: false,
-                                style: {
-                                    fontSize: '2em'
-                                },
-                                pointFormat: '<table class="retoTituloNegro" style=" color: {point.color};"><tr><td>{series.name} </td><td> {point.y} %  <td></tr><tr><td><small>Solo fltan</small> </td><td> <small> {point.bsktiempo}</small> <td></tr></table>',
-                                positioner: function (labelWidth) {
-                                    return {
-                                        x: 200 - labelWidth / 2,
-                                        y: 180
-                                    };
-                                }
-                            },
-
-                            pane: {
-                                startAngle: 0,
-                                endAngle: 360,
-                                background: [{ // Track for Move
-                                    outerRadius: '112%',
-                                    innerRadius: '100%',
-                                    backgroundColor: HighCharts.Color(HighCharts.getOptions().colors[0])
-                                        .setOpacity(0.3)
-                                        .get(),
-                                    borderWidth: 0
-                                }, { // Track for Exercise
-                                    outerRadius: '99%',
-                                    innerRadius: '90%',
-                                    backgroundColor: HighCharts.Color(HighCharts.getOptions().colors[1])
-                                        .setOpacity(0.3)
-                                        .get(),
-                                    borderWidth: 0
-                                }, { // Track for Exercise
-                                    outerRadius: '89%',
-                                    innerRadius: '80%',
-                                    backgroundColor: HighCharts.Color(HighCharts.getOptions().colors[2])
-                                        .setOpacity(0.3)
-                                        .get(),
-                                    borderWidth: 0
-                                }, { // Track for Exercise
-                                    outerRadius: '79%',
-                                    innerRadius: '70%',
-                                    backgroundColor: HighCharts.Color(HighCharts.getOptions().colors[3])
-                                        .setOpacity(0.3)
-                                        .get(),
-                                    borderWidth: 0
-                                }, { // Track for Stand
-                                    outerRadius: '69%',
-                                    innerRadius: '60%',
-                                    backgroundColor: HighCharts.Color(HighCharts.getOptions().colors[4])
-                                        .setOpacity(0.3)
-                                        .get(),
-                                    borderWidth: 0
-                                }]
-                            },
-
-                            yAxis: {
-                                min: 0,
-                                max: 100,
-                                lineWidth: 0,
-                                tickPositions: []
-                            },
-
-                            plotOptions: {
-                                solidgauge: {
-                                    dataLabels: {
-                                        enabled: false
-                                    },
-                                    linecap: 'round',
-                                    stickyTracking: false,
-                                    rounded: true
-                                }
-                            },
-
-                            series: [{
-                                name: 'Cena de navidad',
-                                data: [{
-                                    color: HighCharts.getOptions().colors[0],
-                                    bsktiempo: '17 días',
-                                //    radius: '112%',
-                                //    innerRadius: '100%',
-                                    y: 82
-                                }]
-                            }, {
-                                name: 'Presentación',
-                                data: [{
-                                    color: HighCharts.getOptions().colors[1],
-                                    bsktiempo: '17 días',
-                                 //   radius: '99%',
-                                 //   innerRadius: '90%',
-                                    y: 78
-                                }]
-                            }, {
-                                name: 'Fiesta con Arturo',
-                                data: [{
-                                    color: HighCharts.getOptions().colors[2],
-                                    bsktiempo: '17 días',
-                                  //  radius: '89%',
-                                  //  innerRadius: '80%',
-                                    y: 55
-                                }]
-                            }, {
-                                name: 'Playita 2018',
-                                data: [{
-                                    color: HighCharts.getOptions().colors[3],
-                                    bsktiempo: '17 días',
-                                  //  radius: '79%',
-                                  //  innerRadius: '70%',
-                                    y: 50
-                                }]
-                            }, {
-                                name: 'Carnaval',
-                                data: [{
-                                    color: HighCharts.getOptions().colors[4],
-                                    bsktiempo: '17 días',
-                                   // radius: '69%',
-                                   // innerRadius: '60%',
-                                    y: 35
-                                }]
-                            }]
-                        }
-                        );
-
-*/
+        __WEBPACK_IMPORTED_MODULE_2_HighCharts__["chart"]('container', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Fruit Consumption'
+            },
+            xAxis: {
+                categories: ['Apples', 'Bananas', 'Oranges']
+            },
+            yAxis: {
+                title: {
+                    text: 'Fruit eaten'
+                }
+            },
+            series: [{
+                    name: 'Jane',
+                    data: [1, 0, 4]
+                }, {
+                    name: 'John',
+                    data: [5, 7, 3]
+                }]
+        });
     };
     return AboutPage;
 }());
@@ -511,9 +395,10 @@ AboutPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-about',template:/*ion-inline-start:"C:\xampp\htdocs\test\ionic\dp4\src\pages\about\about.html"*/'\n\n<ion-content padding>\n\n<button></button>\n\n<div id="container" style="display: block;"	></div>\n\n<div id="plop" style="width: 100%; height: 400px; margin: 0 auto"></div>\n\n<button (click)="ver()" >Refrescar </button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\test\ionic\dp4\src\pages\about\about.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object])
 ], AboutPage);
 
+var _a;
 //# sourceMappingURL=about.js.map
 
 /***/ }),
@@ -766,7 +651,7 @@ SplitPane = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_common__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -996,8 +881,8 @@ ModuloPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1123,16 +1008,16 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_jmyapis__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_jmydb__ = __webpack_require__(410);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_jmy_fat_kit__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_http__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_http__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_welcome_welcome__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_login_login__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_signup_signup__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_repass_repass__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_repass_repass__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_about_about__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contact_contact__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_mi_perfil_mi_perfil__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_mi_perfil_mi_perfil__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_modulo_modulo__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_status_bar__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_splash_screen__ = __webpack_require__(207);
@@ -1196,10 +1081,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                 links: [
                     { loadChildren: '../pages/data-base/data-base.module#DataBasePageModule', name: 'DataBasePage', segment: 'data-base', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/mi-perfil/mi-perfil.module#MiPerfilPageModule', name: 'MiPerfilPage', segment: 'mi-perfil', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/repass/repass.module#RepassPageModule', name: 'RepassPage', segment: 'repass', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/signup/signup.module#SignupModule', name: 'Signup', segment: 'signup', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginModule', name: 'Login', segment: 'login', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/repass/repass.module#RepassPageModule', name: 'RepassPage', segment: 'repass', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/mi-perfil/mi-perfil.module#MiPerfilPageModule', name: 'MiPerfilPage', segment: 'mi-perfil', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/signup/signup.module#SignupModule', name: 'Signup', segment: 'signup', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/welcome/welcome.module#WelcomeModule', name: 'Welcome', segment: 'welcome', priority: 'low', defaultHistory: [] }
                 ]
             })
@@ -1244,7 +1129,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_jmy_fat_kit__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_welcome_welcome__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_modulo_modulo__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_mi_perfil_mi_perfil__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_mi_perfil_mi_perfil__ = __webpack_require__(109);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1903,11 +1788,11 @@ webpackContext.id = 413;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return jmyapis; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_common__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2124,11 +2009,11 @@ jmyapis = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Login; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_jmyapis__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__signup_signup__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__repass_repass__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__repass_repass__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2331,7 +2216,7 @@ Signup = __decorate([
 
 /***/ }),
 
-/***/ 85:
+/***/ 83:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
